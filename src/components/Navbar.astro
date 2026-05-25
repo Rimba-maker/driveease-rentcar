@@ -1,0 +1,86 @@
+---
+import { Menu, X } from 'lucide-react';
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-[var(--color-surface-pressed)] bg-[var(--color-canvas)]/90 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <div class="flex items-center gap-2">
+      <a href="/" class="text-xl font-bold tracking-tight text-[var(--color-ink)] hover:opacity-80 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md px-2 -mx-2 py-1">
+        DriveEase
+      </a>
+    </div>
+
+    {/* Desktop Nav */}
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#armada" class="text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md">Mobil</a>
+      <a href="#layanan" class="text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md">Layanan</a>
+      <a href="#cabang" class="text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md">Cabang</a>
+      <a href="#corporate" class="text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] rounded-md">Corporate</a>
+    </nav>
+
+    <div class="hidden md:block">
+      <a href="#booking" class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-2.5 text-sm font-medium text-[var(--color-on-primary)] transition-transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]">
+        Cek Ketersediaan
+      </a>
+    </div>
+
+    {/* Mobile Menu Toggle */}
+    <button id="mobile-menu-btn" class="md:hidden flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-[var(--color-ink)] hover:bg-[var(--color-canvas-soft)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" aria-label="Toggle menu" aria-expanded="false">
+      <Menu size={24} className="menu-open-icon" />
+      <X size={24} className="menu-close-icon hidden" />
+    </button>
+  </div>
+
+  {/* Mobile Nav Overlay */}
+  <div id="mobile-menu" class="fixed inset-x-0 top-[73px] bottom-0 z-40 hidden flex-col bg-[var(--color-canvas)] px-6 py-8 md:hidden overflow-y-auto h-[calc(100vh-73px)] border-t border-[var(--color-surface-pressed)]">
+    <nav class="flex flex-col gap-8 mt-4">
+      <a href="#armada" class="mobile-link text-3xl font-bold text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors border-b border-[var(--color-surface-pressed)] pb-4">Mobil</a>
+      <a href="#layanan" class="mobile-link text-3xl font-bold text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors border-b border-[var(--color-surface-pressed)] pb-4">Layanan</a>
+      <a href="#cabang" class="mobile-link text-3xl font-bold text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors border-b border-[var(--color-surface-pressed)] pb-4">Cabang</a>
+      <a href="#corporate" class="mobile-link text-3xl font-bold text-[var(--color-ink)] hover:text-[var(--color-body)] transition-colors border-b border-[var(--color-surface-pressed)] pb-4">Corporate</a>
+    </nav>
+    <div class="mt-auto pb-8 pt-8">
+      <a href="#booking" class="mobile-link flex w-full min-h-[56px] items-center justify-center rounded-full bg-[var(--color-primary)] text-lg font-bold text-[var(--color-on-primary)] transition-transform active:scale-95 shadow-md">
+        Cek Ketersediaan
+      </a>
+      <p class="text-center text-sm font-medium text-[var(--color-mute)] mt-4">Hotline: 0811-XXXX-XXXX</p>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.querySelector('.menu-open-icon');
+  const closeIcon = document.querySelector('.menu-close-icon');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function toggleMenu() {
+    const isExpanded = btn?.getAttribute('aria-expanded') === 'true';
+    btn?.setAttribute('aria-expanded', (!isExpanded).toString());
+    
+    if (isExpanded) {
+      menu?.classList.add('hidden');
+      menu?.classList.remove('flex');
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      document.body.style.overflow = '';
+    } else {
+      menu?.classList.remove('hidden');
+      menu?.classList.add('flex');
+      openIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  btn?.addEventListener('click', toggleMenu);
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (btn?.getAttribute('aria-expanded') === 'true') {
+        toggleMenu();
+      }
+    });
+  });
+</script>
