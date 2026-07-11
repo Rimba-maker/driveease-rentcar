@@ -37,7 +37,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+    <section id="faq" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl">
           Pertanyaan Umum (FAQ)

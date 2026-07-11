@@ -34,7 +34,7 @@ const options = [
 
 export default function RentalOptions() {
   return (
-    <section id="layanan" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="layanan" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl">
           Lepas Kunci atau With Driver?

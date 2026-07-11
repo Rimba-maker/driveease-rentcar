@@ -16,7 +16,7 @@ const branches = [
 
 export default function CoverageArea() {
   return (
-    <section id="cabang" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="cabang" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl">
           Cabang Kami
@@ -62,15 +62,15 @@ export default function CoverageArea() {
         </div>
 
         <div className="w-full lg:w-1/2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory no-scrollbar gap-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid-cols-2">
             {branches.map((branch, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="flex items-center gap-3 p-4 rounded-xl bg-[var(--color-canvas-soft)] hover:bg-[var(--color-surface-pressed)] transition-colors"
+                className="flex shrink-0 snap-start w-[70%] sm:w-auto items-center gap-3 p-4 rounded-xl bg-[var(--color-canvas-soft)] hover:bg-[var(--color-surface-pressed)] transition-colors"
               >
                 <div className="w-10 h-10 rounded-full bg-[var(--color-canvas)] flex items-center justify-center shrink-0 shadow-sm">
                   <MapPin size={18} className="text-[var(--color-ink)]" />

@@ -66,7 +66,7 @@ Apakah unit tersedia di tanggal tersebut? Terima kasih.`;
   const serviceType = watch('serviceType');
 
   return (
-    <section id="booking" className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--color-primary)] relative overflow-hidden">
+    <section id="booking" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--color-primary)] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -mt-24 -mr-24 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
       

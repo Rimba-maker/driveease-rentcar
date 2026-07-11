@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import MobileBottomBar from '../components/MobileBottomBar.astro';
 
 interface Props {
   title: string;
@@ -33,9 +34,10 @@ const { title, description = 'Rental mobil terpercaya, dari city car sampai exec
   </head>
   <body class="flex min-h-screen flex-col bg-[var(--color-canvas)] text-[var(--color-ink)] font-sans antialiased">
     <Navbar />
-    <main class="flex-1">
+    <main class="flex-1 pb-20 md:pb-0">
       <slot />
     </main>
     <Footer />
+    <MobileBottomBar />
   </body>
 </html>

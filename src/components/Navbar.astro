@@ -24,8 +24,8 @@ import { Menu, X } from 'lucide-react';
       </a>
     </div>
 
-    {/* Mobile Menu Toggle */}
-    <button id="mobile-menu-btn" class="md:hidden flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-[var(--color-ink)] hover:bg-[var(--color-canvas-soft)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" aria-label="Toggle menu" aria-expanded="false">
+    {/* Mobile Menu Toggle: hidden on mobile, triggered instead by MobileBottomBar's Menu button */}
+    <button id="mobile-menu-btn" class="hidden min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-[var(--color-ink)] hover:bg-[var(--color-canvas-soft)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" aria-label="Toggle menu" aria-expanded="false">
       <Menu size={24} className="menu-open-icon" />
       <X size={24} className="menu-close-icon hidden" />
     </button>

@@ -73,7 +73,7 @@ export default function Testimonial() {
   };
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[var(--color-canvas-soft)] overflow-hidden">
+    <section className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-[var(--color-canvas-soft)] overflow-hidden">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl mb-16">
           Cerita Klien Kami
