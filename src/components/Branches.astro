@@ -1,5 +1,5 @@
 ---
-import { branches, rp, DELIVERY_FEE } from '../data/site';
+import { branches, rp, DELIVERY_FEE, waLink } from '../data/site';
 ---
 
 <section id="cabang" class="section wrap" aria-labelledby="cabang-title">
@@ -24,6 +24,10 @@ import { branches, rp, DELIVERY_FEE } from '../data/site';
           </div>
         </details>
       ))}
+      <div class="tile tile--accent bars-end reveal">
+        <p class="lead">Butuh mobil diantar ke hotel atau bandara? Hotline kami aktif 24 jam.</p>
+        <a class="btn btn--paper" style="align-self:flex-start" href={waLink('Halo DriveEase, saya butuh mobil diantar.')} target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+      </div>
     </div>
   </div>
 </section>
