@@ -51,7 +51,7 @@ export const DRIVER_PER_DAY = 175000;
 export const DELIVERY_FEE = 100000;
 
 /* ---------- Hero sheet ---------- */
-export interface Frame { src: string; alt: string; ratio: string; strip: string }
+export interface Frame { src: string; alt: string; ratio: string; strip: string; video?: string }
 export const heroColumns: Frame[][] = [
   [
     { src: '/img/jakarta-night.webp', alt: 'Lampu kota Jakarta Selatan di malam hari', ratio: '4/3', strip: 'Jakarta · Kuningan' },
@@ -62,7 +62,7 @@ export const heroColumns: Frame[][] = [
   ],
   [
     { src: '/img/prambanan.webp', alt: 'Candi Prambanan di Yogyakarta', ratio: '4/3', strip: 'Yogyakarta' },
-    { src: '/img/car-hatch.webp', alt: 'Hatchback putih', ratio: '4/3', strip: 'City Car · Rp 280k' },
+    { src: '/video/driver-poster.webp', video: '/video/driver-loop.mp4', alt: 'Sopir profesional mengemudi dengan tenang', ratio: '4/3', strip: 'With driver' },
     { src: '/img/jakarta-road.webp', alt: 'Jalan raya Jakarta menuju Monas di malam hari', ratio: '3/4', strip: 'Jakarta · Monas' },
     { src: '/img/borobudur-mist.webp', alt: 'Stupa Borobudur dalam kabut', ratio: '3/4', strip: 'Magelang' },
     { src: '/img/car-hyundai.webp', alt: 'SUV hitam di jalan basah saat senja', ratio: '3/4', strip: 'SUV · Senja' },
@@ -70,7 +70,7 @@ export const heroColumns: Frame[][] = [
   [
     { src: '/img/car-sedan-door.webp', alt: 'Sopir membukakan pintu sedan hitam', ratio: '4/3', strip: 'Sedan eksekutif' },
     { src: '/img/bandung-aerial.webp', alt: 'Bandung dari udara', ratio: '3/4', strip: 'Bandung' },
-    { src: '/img/interior-benz.webp', alt: 'Interior sedan dengan kulit oranye', ratio: '4/3', strip: 'Interior terawat' },
+    { src: '/img/car-hatch.webp', alt: 'Hatchback putih', ratio: '4/3', strip: 'City Car · Rp 280k' },
     { src: '/img/lot-aerial.webp', alt: 'Lapangan parkir unit dilihat dari udara', ratio: '4/3', strip: 'Lapangan · 200+ unit' },
     { src: '/img/bali-sunset.webp', alt: 'Matahari terbenam di pantai Bali', ratio: '3/4', strip: 'Bali · Senja' },
   ],
@@ -184,5 +184,5 @@ export const faqs = [
 /* ---------- Kredit foto ---------- */
 export const photoCredits = [
   'Jeffry Surianto', 'Kelvin Valerio', 'Kipras Zabeliauskas', 'Trac Vu', 'Pavel Danilyuk',
-  'Artem Podrez', 'Fatih Erden', 'Negative Space', 'Lan Yao', 'Vasilis Karkalas', 'Gustavo Fring', 'Erik Mclean',
+  'Artem Podrez', 'Fatih Erden', 'Negative Space', 'Lan Yao', 'Vasilis Karkalas', 'Gustavo Fring', 'Erik Mclean', 'cottonbro studio (video)',
 ];

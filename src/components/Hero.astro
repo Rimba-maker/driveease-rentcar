@@ -12,7 +12,11 @@ const dims = (r: string) => (r === '3/4' ? [600, 800] : [800, 600]);
           const [w, h] = dims(f.ratio);
           return (
             <figure class={`frame${ci === 1 && fi === 0 ? ' drift' : ''}${ci === 4 && fi === 1 ? ' drift' : ''}`} style={`--r:${f.ratio};--ci:${ci};--fi:${fi}`}>
+              {f.video ? (
+                <video poster={f.src} muted loop playsinline autoplay preload="metadata" aria-label={f.alt} width={w} height={h}><source src={f.video.replace(".mp4", ".webm")} type="video/webm" /><source src={f.video} type="video/mp4" /></video>
+              ) : (
               <img src={f.src} srcset={srcSet(f.src)} sizes="(max-width: 899px) 50vw, 17vw" alt={f.alt} width={w} height={h} loading={fi < 2 ? 'eager' : 'lazy'} decoding="async" />
+              )}
               <figcaption class={`strip s${(ci + fi) % 4}`}>{f.strip}</figcaption>
             </figure>
           );

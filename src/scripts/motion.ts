@@ -37,3 +37,18 @@ if (nav) {
     { passive: true },
   );
 }
+
+// Moving pictures: muted loops play only when visible, and stay on the poster under reduced motion.
+const videos = Array.from(document.querySelectorAll<HTMLVideoElement>('video[autoplay]'));
+if (reduced) {
+  videos.forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
+} else if ('IntersectionObserver' in window) {
+  const vio = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const v = e.target as HTMLVideoElement;
+      if (e.isIntersecting) v.play().catch(() => {});
+      else v.pause();
+    }
+  }, { threshold: 0.15 });
+  videos.forEach((v) => vio.observe(v));
+}

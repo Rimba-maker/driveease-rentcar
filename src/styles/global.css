@@ -559,3 +559,5 @@ html.js .steps-scene.is-live .gt:nth-child(4) { min-height: 56vh; }
 @media (max-width: 899px) { .date-panel { left: 0; right: 0; } }
 
 .wordmark-img { display: block; width: 100%; height: auto; }
+
+.frame video, .tile video.fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
