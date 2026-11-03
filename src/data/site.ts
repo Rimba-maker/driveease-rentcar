@@ -34,7 +34,7 @@ export const cars: Car[] = [
   { id: 'innova', name: 'Toyota Innova Reborn V', category: 'SUV', pricePerDay: 550000, seats: 8, transmission: 'Matic', image: '/img/car-suv-motion.webp', alt: 'SUV hitam melaju di jalan raya' },
   { id: 'fortuner', name: 'Toyota Fortuner VRZ', category: 'SUV', pricePerDay: 750000, seats: 7, transmission: 'Matic', image: '/img/car-fortuner.webp', alt: 'Toyota Fortuner hitam di antara pepohonan' },
   { id: 'pajero', name: 'Mitsubishi Pajero Sport', category: 'SUV', pricePerDay: 800000, seats: 7, transmission: 'Matic', image: '/img/car-pajero.webp', alt: 'Mitsubishi Pajero Sport hitam di padang rumput berkabut' },
-  { id: 'camry', name: 'Toyota Camry 2.5G', category: 'Sedan', pricePerDay: 950000, seats: 5, transmission: 'Matic', image: '/img/car-sedan-door.webp', alt: 'Sedan hitam eksekutif dengan pintu dibukakan sopir' },
+  { id: 'camry', name: 'Toyota Camry 2.5G', category: 'Sedan', pricePerDay: 950000, seats: 5, transmission: 'Matic', image: '/img/car-camry.webp', alt: 'Interior Toyota Camry dengan jok kulit merah dan setir multifungsi' },
   { id: 'hiace', name: 'Toyota Hiace Premio', category: 'Bus', pricePerDay: 1200000, seats: 16, transmission: 'Manual', image: '/img/car-hiace.webp', alt: 'Toyota Hiace putih hijau di jalan perbukitan' },
 ];
 
@@ -184,5 +184,5 @@ export const faqs = [
 /* ---------- Kredit foto ---------- */
 export const photoCredits = [
   'Jeffry Surianto', 'Kelvin Valerio', 'Kipras Zabeliauskas', 'Trac Vu', 'Pavel Danilyuk',
-  'Artem Podrez', 'Fatih Erden', 'Negative Space', 'Lan Yao', 'Vasilis Karkalas', 'Gustavo Fring', 'Erik Mclean', 'cottonbro studio (video)',
+  'Artem Podrez', 'Fatih Erden', 'Negative Space', 'Lan Yao', 'Vasilis Karkalas', 'Gustavo Fring', 'Erik Mclean', 'Dextar Studio', 'cottonbro studio (video)',
 ];

@@ -47,6 +47,7 @@ export default function Fleet() {
 
       <div
         className="cars"
+        data-full4={span(4, 3) === 4 ? 'true' : undefined}
         aria-live="polite"
         style={{ ['--sp4' as string]: span(4, 3), ['--sp3' as string]: span(3, 3), ['--sp2' as string]: span(2, 1) }}
       >
@@ -80,6 +81,12 @@ export default function Fleet() {
             Tanya via WhatsApp
           </a>
         </motion.div>
+      </div>
+      <div className="more-band tile tile--accent">
+        <p className="lead">Unit yang kamu cari tidak ada di daftar?</p>
+        <a className="btn btn--paper" href={waLink('Halo DriveEase, saya cari unit yang tidak ada di website.')} target="_blank" rel="noopener">
+          Tanya via WhatsApp
+        </a>
       </div>
       <style>{`
         .cars .more { grid-column: span var(--sp4); }
