@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { cars, rp, rpShort, waLink, DRIVER_PER_DAY, DELIVERY_FEE } from '../../data/site';
-
-type Mode = 'lepas-kunci' | 'with-driver';
+import { cars, rp, rpShort, waLink, DELIVERY_FEE } from '../../data/site';
+import { quote, type Mode } from '../../lib/pricing';
 
 export default function Calculator() {
   const [carId, setCarId] = useState('avanza');
@@ -10,17 +9,7 @@ export default function Calculator() {
   const [delivery, setDelivery] = useState(false);
 
   const car = cars.find((c) => c.id === carId)!;
-  const perDay = car.pricePerDay + (mode === 'with-driver' ? DRIVER_PER_DAY : 0);
-  const total = perDay * days + (delivery ? DELIVERY_FEE : 0);
-  const dp = Math.round(total * 0.3);
-  const km = days * 300;
-
-  // Estimasi paket bulanan: 62–65% dari tarif harian x 30 (sample, konfirmasi klien)
-  const daily30 = perDay * 30;
-  const monthlyLow = Math.round((daily30 * 0.62) / 100000) * 100000;
-  const monthlyHigh = Math.round((daily30 * 0.65) / 100000) * 100000;
-  const saveLow = Math.round((1 - 0.65) * 100);
-  const saveHigh = Math.round((1 - 0.62) * 100);
+  const { perDay, total, dp, freeKm: km, daily30, monthlyLow, monthlyHigh, saveLow, saveHigh } = quote(carId, days, mode, delivery);
   const longStay = days >= 20;
 
   const message = `Halo DriveEase, saya mau sewa ${car.name} ${days} hari (${mode === 'with-driver' ? 'with driver' : 'lepas kunci'})${delivery ? ' dengan delivery' : ''}. Estimasi total ${rp(total)}. Apakah unit tersedia?`;

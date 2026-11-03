@@ -11,10 +11,10 @@ import { corporate, waLink } from '../data/site';
   </div>
   <div class="corp-tiles">
     <div class="tile corp-photo reveal">
-      <img class="fill" src="/img/handshake.jpg" alt="Dua profesional berjabat tangan setelah menyepakati kontrak" width="1600" height="1067" loading="lazy" decoding="async" />
+      <img class="fill" src="/img/handshake.webp" srcset="/img/handshake-sm.webp 800w, /img/handshake.webp 1600w" sizes="(max-width: 899px) 100vw, 58vw" alt="Dua profesional berjabat tangan setelah menyepakati kontrak" width="1600" height="1067" loading="lazy" decoding="async" />
     </div>
     <div class="tile tile--ink corp-facts reveal" style="--d:1">
-      <p class="num">50+</p>
+      <p class="num" data-count="50" data-suffix="+">50+</p>
       <ul>
         {corporate.map((c) => (
           <li><b>{c.title}</b><span>{c.text}</span></li>

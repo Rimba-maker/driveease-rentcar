@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import type { DateRange as Range } from 'react-day-picker';
 import { branchCities, cars, waLink } from '../../data/site';
+import DateRangePicker from './DateRange';
 
 const schema = z.object({
   name: z.string().min(3, 'Nama terlalu pendek'),
@@ -17,6 +19,7 @@ type Data = z.infer<typeof schema>;
 
 export default function BookingForm() {
   const [sent, setSent] = useState<string | null>(null);
+  const [range, setRange] = useState<Range | undefined>();
   const {
     register, handleSubmit, watch, setValue, formState: { errors },
   } = useForm<Data>({ resolver: zodResolver(schema), defaultValues: { serviceType: 'lepas-kunci' } });
@@ -74,15 +77,22 @@ export default function BookingForm() {
         </label>
       </div>
 
-      <div className="two">
-        <label className="field-l">Tanggal pickup
-          <input type="date" {...register('pickupDate')} {...inv('pickupDate')} />
-          {err('pickupDate')}
-        </label>
-        <label className="field-l">Tanggal kembali
-          <input type="date" {...register('returnDate')} {...inv('returnDate')} />
-          {err('returnDate')}
-        </label>
+      <div className="field-l">
+        <span id="tgl-l">Tanggal sewa</span>
+        <input type="hidden" {...register('pickupDate')} />
+        <input type="hidden" {...register('returnDate')} />
+        <DateRangePicker
+          value={range}
+          invalid={!!(errors.pickupDate || errors.returnDate)}
+          describedBy={errors.pickupDate || errors.returnDate ? 'e-pickupDate' : undefined}
+          onChange={(r) => {
+            setRange(r);
+            const iso = (d?: Date) => (d ? new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10) : '');
+            setValue('pickupDate', iso(r?.from), { shouldValidate: true });
+            setValue('returnDate', iso(r?.to ?? r?.from), { shouldValidate: true });
+          }}
+        />
+        {errors.pickupDate || errors.returnDate ? <span className="err" id="e-pickupDate" role="alert">Pilih tanggal pickup dan kembali</span> : null}
       </div>
 
       <div className="two">

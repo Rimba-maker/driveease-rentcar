@@ -118,6 +118,8 @@ html.js .reveal {
   transition-delay: calc(var(--d, 0) * 70ms);
 }
 html.js .reveal.in { opacity: 1; transform: none; }
+/* big blocks (tiles, bars, rows) rise into place but are never absent */
+html.js .reveal:is(.tile, .bar, .row, .plan-m, .mt) { opacity: 1; }
 @media (max-width: 767px) {
   /* on phones the parts rise into place but are never absent */
   html.js .reveal { opacity: 1; transform: translateY(28px); }
@@ -199,8 +201,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .mosaic--m { grid-template-columns: repeat(3, minmax(0, 1fr)); display: none; }
 .mt { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--surface); }
 .mt .px { position: absolute; inset: 0; background-repeat: no-repeat; transition: transform 0.6s var(--ease); }
-.mosaic--d .px { background-image: url(/img/lot-mosaic.jpg); background-size: 600% 400%; }
-.mosaic--m .px { background-image: url(/img/lot-mosaic-m.jpg); background-size: 300% 400%; }
+.mosaic--d .px { background-image: url(/img/lot-mosaic.webp); background-size: 600% 400%; }
+.mosaic--m .px { background-image: url(/img/lot-mosaic-m.webp); background-size: 300% 400%; }
 .mt:hover .px { transform: scale(1.08); }
 .mt.tile--ink { background: var(--field); color: var(--field-ink); }
 .mt.tile--accent { background: var(--accent); color: var(--accent-ink); }
@@ -499,3 +501,61 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* hover feedback for tiles */
 .tile-hover { transition: transform 0.3s var(--ease); }
 .tile-hover:hover { transform: translateY(-3px); }
+
+/* =========================================================
+   Scenes: finished composition first, live layout under .is-live
+   ========================================================= */
+.unit-scene .scene-stage { display: grid; grid-template-columns: 1fr 1fr; gap: var(--g); padding-inline: var(--m); }
+.unit-scene .lot, .unit-scene .unit { min-height: 56svh; }
+.unit-scene .lot img, .unit-scene .unit img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.unit-tag { display: none; }
+.unit-card { grid-column: 1 / -1; padding: 32px var(--m) 36px; display: grid; grid-template-columns: 7fr 5fr; gap: 12px 40px; align-items: end; }
+.unit-card h2 { grid-column: 1 / -1; }
+.unit-card .lead { color: var(--field-ink); max-width: 40ch; }
+.unit-card .btn { justify-self: start; }
+@media (max-width: 899px) { .unit-scene .scene-stage { grid-template-columns: 1fr; } .unit-card { grid-template-columns: 1fr; } .unit-scene .lot, .unit-scene .unit { min-height: 38svh; } }
+
+/* live: the lot fills the stage, one unit grows out of it */
+html.js .unit-scene.is-live .scene-stage { display: block; padding: 0; background: var(--surface-2); }
+html.js .unit-scene.is-live .lot, html.js .unit-scene.is-live .unit { position: absolute; inset: 0; min-height: 0; }
+html.js .unit-scene.is-live .unit { z-index: 2; }
+html.js .unit-scene.is-live .unit-tag {
+  display: block; position: absolute; z-index: 3; left: 62%; top: 51%; margin: 0; transform: translateX(-50%);
+  background: var(--accent); color: var(--accent-ink); padding: 8px 14px; white-space: nowrap;
+}
+html.js .unit-scene.is-live .unit-card {
+  position: absolute; z-index: 4; left: var(--m); bottom: var(--m); width: min(640px, calc(100% - 2 * var(--m)));
+  display: grid; grid-template-columns: 1fr; padding: 28px;
+}
+html.js .unit-scene.is-live .unit-card .lead { max-width: 36ch; }
+@media (max-width: 767px) { html.js .unit-scene.is-live .unit-tag { left: 62%; top: 52%; } }
+
+.steps-scene .scene-stage { padding-block: 0; }
+html.js .steps-scene.is-live .scene-stage { display: flex; flex-direction: column; justify-content: flex-end; gap: 32px; padding-block: 24px var(--m); }
+html.js .steps-scene.is-live .intro { margin-bottom: 0; }
+html.js .steps-scene.is-live .gt:nth-child(1) { min-height: 26vh; }
+html.js .steps-scene.is-live .gt:nth-child(2) { min-height: 36vh; }
+html.js .steps-scene.is-live .gt:nth-child(3) { min-height: 46vh; }
+html.js .steps-scene.is-live .gt:nth-child(4) { min-height: 56vh; }
+.section.scene { margin-top: var(--gap-section); }
+
+/* ---------- fleet: one wide tile ---------- */
+.car.wide { grid-column: span 2; }
+
+/* ---------- date range (react-day-picker, flattened to the board) ---------- */
+.daterange { position: relative; }
+.date-btn { width: 100%; min-height: 52px; padding: 0 14px; border: 2px solid transparent; border-radius: 0; background: var(--bg); color: var(--ink); font-size: var(--t-body); text-align: left; cursor: pointer; transition: border-color var(--t-hover) ease; }
+.date-btn:hover, .date-btn[aria-expanded="true"] { border-color: var(--ink); }
+.date-btn[aria-invalid="true"] { border-color: var(--accent); }
+.date-panel { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; background: var(--bg); padding: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18); /* taste-skill-ignore: floating dialog */ }
+.date-panel .rdp-root {
+  --rdp-accent-color: var(--accent); --rdp-accent-background-color: var(--surface);
+  --rdp-day-height: 44px; --rdp-day-width: 44px; --rdp-day_button-height: 40px; --rdp-day_button-width: 40px;
+  --rdp-day_button-border-radius: 0; --rdp-selected-border: 0; --rdp-range_middle-background-color: var(--surface);
+  --rdp-range_middle-color: var(--ink); --rdp-today-color: var(--accent);
+  font-family: var(--font); font-size: var(--t-body); color: var(--ink);
+}
+.date-panel .rdp-selected .rdp-day_button { background: var(--accent); color: var(--accent-ink); border: 0; }
+@media (max-width: 899px) { .date-panel { left: 0; right: 0; } }
+
+.wordmark-img { display: block; width: 100%; height: auto; }

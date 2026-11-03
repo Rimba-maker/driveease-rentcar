@@ -20,17 +20,17 @@ const pos = (i: number, cols: number, rows: number) =>
       );
       if (i === 8) return (
         <div class="mt mt--c tile--accent reveal" style={`${style}--d:2`}>
-          <span class="big">200+</span><span class="lead">unit terawat siap sewa</span>
+          <span class="big" data-count="200" data-suffix="+">200+</span><span class="lead">unit terawat siap sewa</span>
         </div>
       );
       if (i === 11) return (
         <div class="mt mt--c reveal" style={`${style}--d:3`}>
-          <span class="big">3 th</span><span class="lead">umur maksimal setiap mobil</span>
+          <span class="big" data-count="3" data-suffix=" th">3 th</span><span class="lead">umur maksimal setiap mobil</span>
         </div>
       );
       if (i === 15) return (
         <div class="mt mt--c tile--ink reveal" style={`${style}--d:4`}>
-          <span class="big">8</span><span class="lead">cabang di kota besar Indonesia</span>
+          <span class="big" data-count="8">8</span><span class="lead">cabang di kota besar Indonesia</span>
         </div>
       );
       if (i === 22) return (
@@ -53,13 +53,13 @@ const pos = (i: number, cols: number, rows: number) =>
         <div class="mt mt--c tile--ink"><h2>Armada kami</h2></div>
       );
       if (i === 4) return (
-        <div class="mt mt--c tile--accent"><span class="big">200+</span><span class="lead">unit siap sewa</span></div>
+        <div class="mt mt--c tile--accent"><span class="big" data-count="200" data-suffix="+">200+</span><span class="lead">unit siap sewa</span></div>
       );
       if (i === 6) return (
-        <div class="mt mt--c"><span class="big">3 th</span><span class="lead">umur maks. mobil</span></div>
+        <div class="mt mt--c"><span class="big" data-count="3" data-suffix=" th">3 th</span><span class="lead">umur maks. mobil</span></div>
       );
       if (i === 8) return (
-        <div class="mt mt--c tile--ink"><span class="big">8</span><span class="lead">cabang</span></div>
+        <div class="mt mt--c tile--ink"><span class="big" data-count="8">8</span><span class="lead">cabang</span></div>
       );
       if (i === 10) return (
         <a class="mt mt--c tile--accent" href="#armada"><span class="big">Lihat</span><span class="lead">semua mobil</span></a>

@@ -3,6 +3,7 @@ import '@fontsource/jost/latin-400.css';
 import '@fontsource/jost/latin-500.css';
 import '@fontsource/jost/latin-700.css';
 import '../styles/global.css';
+import '../styles/stage.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MobileBottomBar from '../components/MobileBottomBar.astro';
@@ -46,7 +47,7 @@ const schema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/img/jakarta-night.jpg" />
+    <meta property="og:image" content="/img/jakarta-night.webp" />
     <meta name="keywords" content="rental mobil jakarta, sewa mobil harian, rental mobil bulanan, sewa innova, lepas kunci jakarta, rental mobil bandung" />
     <script is:inline>document.documentElement.classList.add('js');</script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -61,6 +62,7 @@ const schema = {
     <MobileBottomBar />
     <script>
       import '../scripts/motion.ts';
+      import '../scripts/scenes.ts';
     </script>
   </body>
 </html>

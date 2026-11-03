@@ -1,23 +1,11 @@
 ---
 import { WA_LINK, photoCredits } from '../data/site';
 
-const letters = 'DRIVEEASE'.split('');
-const heights = [100, 82, 94, 76, 88, 100, 78, 92, 74];
-const colors = ['var(--accent)', 'var(--field)', '#8a8a8a', 'var(--accent)', 'var(--field)', '#8a8a8a', 'var(--accent)', 'var(--field)', '#8a8a8a'];
 ---
 
 <footer class="footer" aria-labelledby="footer-title">
   <h2 id="footer-title" class="sr-only">DriveEase Rentcar</h2>
-  <div class="blocks" role="img" aria-label="DriveEase">
-    {[letters.slice(0, 5), letters.slice(5)].map((group, g) => (
-      <div class="blk-group">
-        {group.map((l, j) => {
-          const i = g * 5 + j;
-          return <span style={`--bh:${heights[i]}%;--bc:${colors[i]}`}>{l}</span>;
-        })}
-      </div>
-    ))}
-  </div>
+  <img class="wordmark-img" src="/wordmark.svg" alt="DriveEase" width="1400" height="300" loading="lazy" decoding="async" />
 
   <div class="foot-grid">
     <div class="foot-links">

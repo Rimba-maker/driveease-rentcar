@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { cars, categories, rp, waLink, type CarCategory } from '../../data/site';
+import { cars, categories, rp, srcSet, waLink, type CarCategory } from '../../data/site';
 
 type Filter = 'Semua' | CarCategory;
 
@@ -14,8 +14,9 @@ export default function Fleet() {
   // The first tile is double size when there are enough cars; the closing tile
   // takes whatever is left of the last row so the board always ends flush.
   const big = list.length >= 5;
+  const wide = list.length >= 7;
   const span = (cols: number, extra: number) => {
-    const cells = list.length + (big ? extra : 0);
+    const cells = list.length + (big ? extra : 0) + (wide ? 1 : 0);
     return cells % cols === 0 ? cols : cols - (cells % cols);
   };
 
@@ -57,13 +58,13 @@ export default function Fleet() {
               href={waLink(`Halo DriveEase, saya mau sewa ${c.name}. Apakah unit tersedia?`)}
               target="_blank"
               rel="noopener"
-              className={`car s${i % 4}${big && i === 0 ? ' big' : ''}`}
+              className={`car s${i % 4}${big && i === 0 ? ' big' : ''}${wide && i === 5 ? ' wide' : ''}`}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              <img src={c.image} alt={c.alt} width={800} height={1000} loading="lazy" decoding="async" />
+              <img src={c.image} srcSet={srcSet(c.image)} sizes={big && i === 0 ? '(max-width: 767px) 100vw, 50vw' : '(max-width: 767px) 50vw, 25vw'} alt={c.alt} width={800} height={1000} loading="lazy" decoding="async" />
               <span className="go">Sewa</span>
               <span className="info">
                 <span className="nm">{c.name}</span>

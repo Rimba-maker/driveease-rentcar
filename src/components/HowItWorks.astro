@@ -2,17 +2,19 @@
 import { steps } from '../data/site';
 ---
 
-<section class="section wrap" aria-labelledby="steps-title">
-  <div class="intro">
-    <h2 id="steps-title" class="head a reveal">Sewa mobil dalam 4 langkah</h2>
-    <p class="lead b reveal" style="--d:1">Dari memilih sampai kunci di tangan, semuanya selesai dalam hitungan menit.</p>
+<section class="scene steps-scene section" data-scene="steps-grow" data-options='{"hold":2}' aria-labelledby="steps-title">
+  <div class="scene-stage wrap">
+    <div class="intro">
+      <h2 id="steps-title" class="head a reveal">Sewa mobil dalam 4 langkah</h2>
+      <p class="lead b reveal" style="--d:1">Dari memilih sampai kunci di tangan, semuanya selesai dalam hitungan menit.</p>
+    </div>
+    <ol class="grow" style="list-style:none;margin:0;padding:0">
+      {steps.map((s) => (
+        <li class="gt">
+          <h3>{s.name}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
   </div>
-  <ol class="grow" style="list-style:none;margin:0;padding:0">
-    {steps.map((s, i) => (
-      <li class="gt reveal" style={`--d:${i + 1}`}>
-        <h3>{s.name}</h3>
-        <p>{s.text}</p>
-      </li>
-    ))}
-  </ol>
 </section>
