@@ -1,0 +1,28 @@
+---
+import BookingForm from './react/BookingForm.tsx';
+---
+
+<section id="booking" class="section wrap" aria-labelledby="cta-title">
+  <div class="cta-row">
+    <div class="tile side l">
+      <img class="fill" src="/img/luggage.jpg" alt="Pasangan menyiapkan koper di bagasi mobil" width="800" height="1000" decoding="async" />
+    </div>
+    <div class="tile tile--accent cta-main">
+      <h2 id="cta-title" class="head">Pesan sekarang, mobil siap esok</h2>
+      <p class="lead">Isi form lima menit, bayar DP 30%, dan unit menunggu di cabang atau diantar ke lokasimu.</p>
+      <a class="btn btn--paper" href="#booking-form">Isi form booking</a>
+    </div>
+    <div class="tile side r" style="background: var(--field)">
+      <img class="fill" src="/img/driver.jpg" alt="Pengemudi tersenyum di balik kemudi" width="800" height="1000" decoding="async" />
+    </div>
+  </div>
+
+  <div class="booking" id="booking-form">
+    <div class="tile ph">
+      <img class="fill" src="/img/keys-fob.jpg" alt="Tangan memegang kunci mobil" width="1600" height="1067" decoding="async" />
+    </div>
+    <div>
+      <BookingForm client:visible />
+    </div>
+  </div>
+</section>

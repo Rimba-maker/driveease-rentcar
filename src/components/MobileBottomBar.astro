@@ -1,43 +1,8 @@
 ---
-import { Home, Car, CalendarCheck, MessageCircle, Menu } from 'lucide-react';
+import { WA_LINK } from '../data/site';
 ---
 
-<nav
-  class="fixed inset-x-0 bottom-0 z-50 flex md:hidden items-end justify-between border-t border-[var(--color-surface-pressed)] bg-[var(--color-canvas)]/95 px-4 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur-md"
-  aria-label="Navigasi cepat"
->
-  <button id="bottombar-home-btn" class="flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-1 rounded-md text-[var(--color-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" aria-label="Ke atas">
-    <Home size={22} />
-    <span class="text-[11px] font-medium">Home</span>
-  </button>
-
-  <a href="#armada" class="flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-1 rounded-md text-[var(--color-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">
-    <Car size={22} />
-    <span class="text-[11px] font-medium">Mobil</span>
-  </a>
-
-  <a href="#booking" class="flex min-h-[56px] min-w-[56px] -translate-y-4 flex-col items-center justify-center gap-1 rounded-full bg-[var(--color-primary)] text-[var(--color-on-primary)] shadow-[0_4px_16px_rgba(0,0,0,0.24)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]" aria-label="Booking">
-    <CalendarCheck size={24} />
-    <span class="text-[10px] font-bold">Booking</span>
-  </a>
-
-  <a href="https://wa.me/628110000000" target="_blank" rel="noopener noreferrer" class="flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-1 rounded-md text-[var(--color-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]">
-    <MessageCircle size={22} />
-    <span class="text-[11px] font-medium">WA</span>
-  </a>
-
-  <button id="bottombar-menu-btn" class="flex min-h-[44px] min-w-[44px] flex-col items-center justify-center gap-1 rounded-md text-[var(--color-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" aria-label="Buka menu">
-    <Menu size={22} />
-    <span class="text-[11px] font-medium">Menu</span>
-  </button>
-</nav>
-
-<script>
-  document.getElementById('bottombar-home-btn')?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  document.getElementById('bottombar-menu-btn')?.addEventListener('click', () => {
-    document.getElementById('mobile-menu-btn')?.click();
-  });
-</script>
+<div class="mbar">
+  <a href="#booking-form" class="a1">Booking</a>
+  <a href={WA_LINK} class="a2" rel="noopener" target="_blank">WhatsApp</a>
+</div>

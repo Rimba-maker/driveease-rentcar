@@ -1,86 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroSearch from '../components/react/HeroSearch.tsx';
-import FleetShowcase from '../components/react/FleetShowcase.tsx';
-import RentalOptions from '../components/react/RentalOptions.tsx';
-import WhyDriveEase from '../components/react/WhyDriveEase.tsx';
+import Hero from '../components/Hero.astro';
+import Showcase from '../components/Showcase.astro';
+import Fleet from '../components/react/Fleet.tsx';
+import Why from '../components/Why.astro';
+import Pricing from '../components/Pricing.astro';
 import HowItWorks from '../components/HowItWorks.astro';
-import MonthlyRental from '../components/MonthlyRental.astro';
-import CorporateSolution from '../components/CorporateSolution.astro';
-import CoverageArea from '../components/react/CoverageArea.tsx';
-import Testimonial from '../components/react/Testimonial.tsx';
-import FAQ from '../components/react/FAQ.tsx';
-import BookingForm from '../components/react/BookingForm.tsx';
+import Corporate from '../components/Corporate.astro';
+import Branches from '../components/Branches.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
 ---
 
 <Layout title="DriveEase Rentcar — Rental Mobil Harian & Bulanan Indonesia">
-  {/* Hero Section */}
-  <section class="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden bg-[var(--color-canvas)] px-4 py-14 sm:py-20 sm:px-6 lg:px-8">
-    <div class="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1920&q=80" 
-        alt="Mobil rental dengan kunci" 
-        class="h-full w-full object-cover object-center opacity-10"
-      />
-    </div>
-
-    <div class="relative z-10 flex w-full max-w-7xl flex-col items-center text-center">
-      <div class="flex items-center gap-4 mb-6">
-        <span class="rounded-full bg-[var(--color-canvas-soft)] px-4 py-1.5 text-sm font-medium">5.000+ Klien Aktif</span>
-        <span class="rounded-full bg-[var(--color-canvas-soft)] px-4 py-1.5 text-sm font-medium">Mobil Maks. 3 Tahun</span>
-      </div>
-
-      <h1 class="max-w-4xl text-5xl font-bold leading-[1.2] tracking-tight text-[var(--color-ink)] md:text-6xl lg:text-[72px]">
-        Rental Mobil Yang Bisa Diandalkan.
-      </h1>
-      
-      <p class="mt-6 max-w-2xl text-lg font-medium text-[var(--color-body)] sm:text-xl">
-        200+ unit mobil terawat, dari MPV keluarga sampai sedan eksekutif. Lepas kunci atau with driver, harian sampai bulanan.
-      </p>
-
-      <div class="mt-10 flex items-center gap-4">
-        <a href="#armada" class="rounded-full bg-[var(--color-primary)] px-6 py-3 text-base font-medium text-[var(--color-on-primary)] transition-transform hover:scale-[1.02] active:scale-[0.98]">
-          Cek Mobil
-        </a>
-        <a href="#booking" class="rounded-full bg-[var(--color-canvas)] px-6 py-3 text-base font-medium text-[var(--color-ink)] shadow-[0_2px_8px_rgba(0,0,0,0.16)] transition-transform hover:scale-[1.02] active:scale-[0.98]">
-          Booking Cepat
-        </a>
-      </div>
-
-      <HeroSearch client:load />
-    </div>
-  </section>
-
-  {/* Fleet Showcase */}
-  <div class="bg-[var(--color-canvas-softer)]">
-    <FleetShowcase client:visible />
-  </div>
-
-  {/* Rental Options */}
-  <RentalOptions client:visible />
-
-  {/* Why DriveEase */}
-  <WhyDriveEase client:visible />
-
-  {/* How It Works */}
+  <Hero />
+  <Showcase />
+  <Fleet client:visible />
+  <Why />
+  <Pricing />
   <HowItWorks />
-
-  {/* Monthly Rental */}
-  <MonthlyRental />
-
-  {/* Corporate Solution */}
-  <CorporateSolution />
-
-  {/* Coverage Area */}
-  <CoverageArea client:visible />
-
-  {/* Testimonial */}
-  <Testimonial client:visible />
-
-  {/* FAQ */}
-  <FAQ client:visible />
-
-  {/* Booking Form */}
-  <BookingForm client:idle />
-
+  <Corporate />
+  <Branches />
+  <Testimonials />
+  <div id="faq"><Faq /></div>
+  <Cta />
 </Layout>

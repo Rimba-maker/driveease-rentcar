@@ -1,51 +1,63 @@
 ---
+import { WA_LINK, photoCredits } from '../data/site';
+
+const letters = 'DRIVEEASE'.split('');
+const heights = [100, 82, 94, 76, 88, 100, 78, 92, 74];
+const colors = ['var(--accent)', 'var(--field)', '#8a8a8a', 'var(--accent)', 'var(--field)', '#8a8a8a', 'var(--accent)', 'var(--field)', '#8a8a8a'];
 ---
 
-<footer class="bg-[var(--color-primary)] py-12 text-[var(--color-on-dark)]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
-      <div class="col-span-1 md:col-span-2">
-        <a href="/" class="text-2xl font-bold tracking-tight text-[var(--color-on-dark)] mb-4 block">
-          DriveEase
-        </a>
-        <p class="text-sm font-normal opacity-80 max-w-sm mb-6">
-          Rental Mudah, Mobil Siap, Perjalanan Lancar. Mobilmu, kemanapun tujuanmu.
-        </p>
-        <div class="flex flex-col gap-2 text-sm opacity-80">
-          <span>📍 Tersedia di 8 Kota Besar Indonesia</span>
-          <span>📞 Hotline 24/7: 0811-XXXX-XXXX</span>
-        </div>
+<footer class="footer" aria-labelledby="footer-title">
+  <h2 id="footer-title" class="sr-only">DriveEase Rentcar</h2>
+  <div class="blocks" role="img" aria-label="DriveEase">
+    {[letters.slice(0, 5), letters.slice(5)].map((group, g) => (
+      <div class="blk-group">
+        {group.map((l, j) => {
+          const i = g * 5 + j;
+          return <span style={`--bh:${heights[i]}%;--bc:${colors[i]}`}>{l}</span>;
+        })}
       </div>
+    ))}
+  </div>
 
+  <div class="foot-grid">
+    <div class="foot-links">
       <div>
-        <h3 class="text-sm font-medium mb-4 uppercase tracking-wider opacity-60">Perusahaan</h3>
-        <ul class="flex flex-col gap-3">
-          <li><a href="#" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">Tentang Kami</a></li>
-          <li><a href="#layanan" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">Layanan</a></li>
-          <li><a href="#corporate" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">Corporate Fleet</a></li>
-          <li><a href="#cabang" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">Cabang</a></li>
+        <h3>Layanan</h3>
+        <ul>
+          <li><a class="link" href="#armada">Armada</a></li>
+          <li><a class="link" href="#harga">Harga</a></li>
+          <li><a class="link" href="#booking-form">Booking</a></li>
         </ul>
       </div>
-
       <div>
-        <h3 class="text-sm font-medium mb-4 uppercase tracking-wider opacity-60">Bantuan</h3>
-        <ul class="flex flex-col gap-3">
-          <li><a href="#faq" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">FAQ</a></li>
-          <li><a href="#" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">Syarat & Ketentuan</a></li>
-          <li><a href="#" class="text-sm font-normal opacity-80 hover:opacity-100 transition-opacity">Kebijakan Privasi</a></li>
+        <h3>Perusahaan</h3>
+        <ul>
+          <li><a class="link" href="#corporate">Corporate fleet</a></li>
+          <li><a class="link" href="#cabang">Cabang</a></li>
+          <li><a class="link" href="#faq">Tanya jawab</a></li>
         </ul>
+      </div>
+      <div>
+        <h3>Sertifikasi</h3>
+        <ul><li>NIB</li><li>IUP</li></ul>
+      </div>
+      <div>
+        <h3>Mitra asuransi</h3>
+        <ul><li>Sinarmas</li><li>Astra</li></ul>
       </div>
     </div>
-
-    <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-xs opacity-60">
-        &copy; {new Date().getFullYear()} DriveEase Rentcar. All rights reserved.
-      </p>
-      <div class="flex items-center gap-4 text-xs opacity-60">
-        <span>Sertifikasi: NIB, IUP</span>
-        <span class="hidden sm:inline">•</span>
-        <span>Asuransi: Sinarmas, Astra</span>
-      </div>
+    <div class="foot-contact">
+      <p class="lead strong" style="margin:0">Mobilmu, kemanapun tujuanmu.</p>
+      <span>Hotline 24/7 melalui WhatsApp dan telepon</span>
+      <span>Instagram, TikTok, YouTube: @driveease.rentcar</span>
     </div>
   </div>
+
+  <div class="foot-bottom">
+    <span>&copy; {new Date().getFullYear()} DriveEase Rentcar. Hak cipta dilindungi.</span>
+    <a class="btn btn--sm" href={WA_LINK} target="_blank" rel="noopener">Chat WhatsApp</a>
+  </div>
+  <p class="credits">
+    Foto: Pexels (lisensi Pexels), antara lain {photoCredits.join(', ')}, dan kontributor lainnya.
+  </p>
 </footer>

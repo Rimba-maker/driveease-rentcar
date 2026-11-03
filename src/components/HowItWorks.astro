@@ -1,56 +1,18 @@
 ---
-import { Search, Calendar, MapPin, Car as CarIcon } from 'lucide-react';
-
-const steps = [
-  {
-    title: 'Pilih Mobil',
-    desc: 'Browse armada kami secara online, cek harga dan spesifikasi yang sesuai dengan kebutuhan Anda.',
-    icon: Search
-  },
-  {
-    title: 'Booking Online',
-    desc: 'Isi form, upload KTP & SIM A, lalu lakukan pembayaran DP 30% untuk mengunci jadwal.',
-    icon: Calendar
-  },
-  {
-    title: 'Pickup / Delivery',
-    desc: 'Ambil mobil di cabang terdekat, atau request layanan antar ke bandara/hotel Anda.',
-    icon: MapPin
-  },
-  {
-    title: 'Drive & Return',
-    desc: 'Nikmati perjalanan Anda dengan tenang. Kembalikan mobil di waktu dan lokasi yang disepakati.',
-    icon: CarIcon
-  }
-];
+import { steps } from '../data/site';
 ---
 
-<section class="py-14 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[var(--color-canvas)]">
-  <div class="text-center max-w-3xl mx-auto mb-16">
-    <h2 class="text-4xl font-bold tracking-tight text-[var(--color-ink)] md:text-5xl">
-      Sewa Mobil dalam 4 Langkah
-    </h2>
-    <p class="mt-4 text-lg text-[var(--color-body)]">
-      Proses penyewaan yang dirancang untuk kecepatan dan kemudahan Anda.
-    </p>
+<section class="section wrap" aria-labelledby="steps-title">
+  <div class="intro">
+    <h2 id="steps-title" class="head a reveal">Sewa mobil dalam 4 langkah</h2>
+    <p class="lead b reveal" style="--d:1">Dari memilih sampai kunci di tangan, semuanya selesai dalam hitungan menit.</p>
   </div>
-
-  <div class="relative max-w-5xl mx-auto">
-    {/* The line must be positioned exactly at the center of the 64px (h-16) circles, which are at the top of their containers. 64px/2 = 32px from the top. */}
-    <div class="absolute top-8 left-[10%] right-[10%] h-px bg-[var(--color-surface-pressed)] hidden md:block"></div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
-      {steps.map((step, index) => (
-        <div class="flex flex-col items-center text-center">
-          <div class="flex items-center justify-center w-16 h-16 rounded-full bg-[var(--color-ink)] text-[var(--color-on-dark)] mb-6 text-xl font-bold shadow-md">
-            {index + 1}
-          </div>
-          <h3 class="text-xl font-bold text-[var(--color-ink)] mb-2">{step.title}</h3>
-          <p class="text-sm text-[var(--color-body)] leading-relaxed">
-            {step.desc}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
+  <ol class="grow" style="list-style:none;margin:0;padding:0">
+    {steps.map((s, i) => (
+      <li class="gt reveal" style={`--d:${i + 1}`}>
+        <h3>{s.name}</h3>
+        <p>{s.text}</p>
+      </li>
+    ))}
+  </ol>
 </section>

@@ -1,0 +1,185 @@
+export const WA_NUMBER = '628110000000';
+export const WA_LINK = `https://wa.me/${WA_NUMBER}`;
+export const waLink = (text: string) => `${WA_LINK}?text=${encodeURIComponent(text)}`;
+
+export const rp = (n: number) =>
+  'Rp ' + new Intl.NumberFormat('id-ID').format(Math.round(n));
+
+export const rpShort = (n: number) => {
+  if (n >= 1_000_000) return 'Rp ' + (n / 1_000_000).toFixed(1).replace('.', ',').replace(',0', '') + 'jt';
+  return 'Rp ' + Math.round(n / 1000) + 'k';
+};
+
+/* ---------- Armada ---------- */
+export type CarCategory = 'City Car' | 'MPV' | 'SUV' | 'Sedan' | 'Bus';
+
+export interface Car {
+  id: string;
+  name: string;
+  category: CarCategory;
+  pricePerDay: number;
+  seats: number;
+  transmission: 'Manual' | 'Matic';
+  image: string;
+  alt: string;
+}
+
+export const cars: Car[] = [
+  { id: 'brio', name: 'Honda Brio Satya', category: 'City Car', pricePerDay: 280000, seats: 5, transmission: 'Matic', image: '/img/car-hatch.jpg', alt: 'Hatchback putih terparkir di bawah pepohonan' },
+  { id: 'avanza', name: 'Toyota Avanza 2023', category: 'MPV', pricePerDay: 350000, seats: 7, transmission: 'Matic', image: '/img/car-van.jpg', alt: 'MPV putih terparkir di depan gedung modern' },
+  { id: 'xenia', name: 'Daihatsu Xenia 2023', category: 'MPV', pricePerDay: 330000, seats: 7, transmission: 'Manual', image: '/img/car-sunset-van.jpg', alt: 'Van putih di perbukitan saat matahari terbenam' },
+  { id: 'innova', name: 'Toyota Innova Reborn V', category: 'SUV', pricePerDay: 550000, seats: 8, transmission: 'Matic', image: '/img/car-suv-motion.jpg', alt: 'SUV hitam melaju di jalan raya' },
+  { id: 'fortuner', name: 'Toyota Fortuner VRZ', category: 'SUV', pricePerDay: 750000, seats: 7, transmission: 'Matic', image: '/img/car-fortuner.jpg', alt: 'Toyota Fortuner hitam di antara pepohonan' },
+  { id: 'pajero', name: 'Mitsubishi Pajero Sport', category: 'SUV', pricePerDay: 800000, seats: 7, transmission: 'Matic', image: '/img/car-prado.jpg', alt: 'SUV hitam di jalan pegunungan' },
+  { id: 'camry', name: 'Toyota Camry 2.5G', category: 'Sedan', pricePerDay: 950000, seats: 5, transmission: 'Matic', image: '/img/car-sedan-door.jpg', alt: 'Sedan hitam eksekutif dengan pintu dibukakan sopir' },
+  { id: 'hiace', name: 'Toyota Hiace Premio', category: 'Bus', pricePerDay: 1200000, seats: 16, transmission: 'Manual', image: '/img/car-hiace.jpg', alt: 'Toyota Hiace putih hijau di jalan perbukitan' },
+];
+
+export const categories: { name: 'Semua' | CarCategory; from: string }[] = [
+  { name: 'Semua', from: '8 unit populer' },
+  { name: 'City Car', from: 'mulai Rp 250k' },
+  { name: 'MPV', from: 'mulai Rp 350k' },
+  { name: 'SUV', from: 'mulai Rp 550k' },
+  { name: 'Sedan', from: 'mulai Rp 850k' },
+  { name: 'Bus', from: 'konsultasi' },
+];
+
+export const DRIVER_PER_DAY = 175000;
+export const DELIVERY_FEE = 100000;
+
+/* ---------- Hero sheet ---------- */
+export interface Frame { src: string; alt: string; ratio: string; strip: string }
+export const heroColumns: Frame[][] = [
+  [
+    { src: '/img/jakarta-night.jpg', alt: 'Lampu kota Jakarta Selatan di malam hari', ratio: '4/3', strip: 'Jakarta · Kuningan' },
+    { src: '/img/bali-terrace.jpg', alt: 'Terasering sawah hijau di Bali', ratio: '3/4', strip: 'Bali · Tegallalang' },
+    { src: '/img/car-hyundai.jpg', alt: 'SUV hitam dari belakang di jalan basah saat senja', ratio: '3/4', strip: 'SUV · Matic' },
+    { src: '/img/jakarta-sunset.jpg', alt: 'Jakarta saat senja dari ketinggian', ratio: '4/3', strip: 'Jakarta · Senja' },
+    { src: '/img/jakarta-traffic.jpg', alt: 'Lalu lintas Jakarta di malam hari', ratio: '3/4', strip: 'Jakarta · Malam' },
+  ],
+  [
+    { src: '/img/prambanan.jpg', alt: 'Candi Prambanan di Yogyakarta', ratio: '4/3', strip: 'Yogyakarta' },
+    { src: '/img/car-hatch.jpg', alt: 'Hatchback putih', ratio: '4/3', strip: 'City Car · Rp 280k' },
+    { src: '/img/jakarta-road.jpg', alt: 'Jalan raya Jakarta menuju Monas di malam hari', ratio: '3/4', strip: 'Jakarta · Monas' },
+    { src: '/img/borobudur-mist.jpg', alt: 'Stupa Borobudur dalam kabut', ratio: '3/4', strip: 'Magelang' },
+    { src: '/img/car-hyundai.jpg', alt: 'SUV hitam di jalan basah saat senja', ratio: '3/4', strip: 'SUV · Senja' },
+  ],
+  [
+    { src: '/img/car-sedan-door.jpg', alt: 'Sopir membukakan pintu sedan hitam', ratio: '4/3', strip: 'Sedan eksekutif' },
+    { src: '/img/bandung-aerial.jpg', alt: 'Bandung dari udara', ratio: '3/4', strip: 'Bandung' },
+    { src: '/img/interior-benz.jpg', alt: 'Interior sedan dengan kulit oranye', ratio: '4/3', strip: 'Interior terawat' },
+    { src: '/img/jakarta-traffic.jpg', alt: 'Lalu lintas Jakarta di malam hari', ratio: '4/3', strip: 'Jakarta · Tol dalam kota' },
+    { src: '/img/bali-sunset.jpg', alt: 'Matahari terbenam di pantai Bali', ratio: '3/4', strip: 'Bali · Senja' },
+  ],
+  [
+    { src: '/img/keys-hand.jpg', alt: 'Tangan menyerahkan kunci mobil', ratio: '4/3', strip: 'Serah terima kunci' },
+    { src: '/img/jakarta-neon.jpg', alt: 'Cakrawala Jakarta di malam hari', ratio: '4/3', strip: 'Jakarta · Sudirman' },
+    { src: '/img/car-van.jpg', alt: 'MPV putih', ratio: '4/3', strip: 'MPV · 7 kursi' },
+    { src: '/img/bali-beach.jpg', alt: 'Pantai Bali dengan ombak biru', ratio: '4/3', strip: 'Bali · Ngurah Rai' },
+    { src: '/img/prambanan.jpg', alt: 'Candi Prambanan', ratio: '3/4', strip: 'Prambanan' },
+  ],
+  [
+    { src: '/img/car-hiace.jpg', alt: 'Toyota Hiace putih hijau', ratio: '4/3', strip: 'Hiace · 16 kursi' },
+    { src: '/img/jakarta-kuningan.jpg', alt: 'Kuningan, Jakarta, dengan jalur kereta layang', ratio: '4/3', strip: 'Jakarta · Kuningan' },
+    { src: '/img/bali-terrace-2.jpg', alt: 'Sawah bertingkat hijau', ratio: '3/4', strip: 'Ubud' },
+    { src: '/img/car-fortuner.jpg', alt: 'SUV hitam di antara pohon', ratio: '4/3', strip: 'SUV · Fortuner' },
+    { src: '/img/jakarta-road.jpg', alt: 'Jalan Jakarta menuju Monas', ratio: '3/4', strip: 'Jakarta · Medan Merdeka' },
+  ],
+  [
+    { src: '/img/bali-sunset.jpg', alt: 'Matahari terbenam oranye di pantai Bali', ratio: '3/4', strip: 'Bali · Kuta' },
+    { src: '/img/borobudur-facade.jpg', alt: 'Tangga dan fasad Candi Borobudur', ratio: '4/3', strip: 'Borobudur' },
+    { src: '/img/car-suv-motion.jpg', alt: 'SUV hitam melaju', ratio: '4/3', strip: 'Antar kota' },
+    { src: '/img/jakarta-tower.jpg', alt: 'Gedung pencakar langit Jakarta dari udara', ratio: '4/3', strip: 'TB Simatupang' },
+    { src: '/img/car-hatch.jpg', alt: 'Hatchback putih', ratio: '3/4', strip: 'City Car · Matic' },
+  ],
+];
+
+/* ---------- Kenapa ---------- */
+export const reasons = [
+  { title: 'Armada maks. 3 tahun', text: 'Mobil masih segar dan jarang trouble. Setiap unit dicek sebelum keluar dari cabang.', terms: ['Unit 2023 ke atas', 'Cek sebelum serah terima', 'Bersih dan wangi'] },
+  { title: 'Asuransi all risk', text: 'Tenang bawa, kami yang tanggung. Deductible hanya Rp 500 ribu bila terjadi kerusakan.', terms: ['Mitra Sinarmas dan Astra', 'Deductible Rp 500k', 'Semua unit tercakup'] },
+  { title: 'Service rutin berkala', text: 'Oli dan filter selalu fresh karena setiap unit diservis tiap 5.000 km.', terms: ['Setiap 5.000 km', 'Oli dan filter baru', 'Rem dan ban dicek'] },
+  { title: 'Roadside 24/7', text: 'Mogok di mana pun, tim kami datang. Hubungi hotline kapan saja, siang atau malam.', terms: ['Hotline 24 jam', 'WhatsApp dan telepon', 'Unit pengganti'] },
+  { title: 'Transparan, tanpa hidden fee', text: 'Harga di awal adalah harga yang dibayar. Jarak bebas 300 km per hari sudah termasuk.', terms: ['Harga di depan', '300 km per hari', 'Deposit jelas'] },
+  { title: 'Booking online cepat', text: 'Lima menit selesai, tanpa telepon-telepon yang ribet. Upload SIM dan KTP lalu bayar DP 30%.', terms: ['Form 5 menit', 'DP 30%', 'QRIS dan transfer'] },
+];
+
+/* ---------- Harga ---------- */
+export const plans = [
+  {
+    id: 'lepas-kunci',
+    name: 'Lepas kunci',
+    price: 'Rp 250k',
+    period: 'per hari',
+    rows: ['12 jam', 'SIM A, KTP, deposit Rp 1–3jt', 'Tanpa driver', 'All risk, deductible Rp 500k', 'Service tiap 5.000 km', '—'],
+    cta: 'Sewa lepas kunci',
+  },
+  {
+    id: 'with-driver',
+    name: 'With driver',
+    price: 'Rp 400k',
+    period: 'per hari + driver Rp 175k',
+    rows: ['8 jam', 'KTP, tanpa deposit mobil', 'Berpengalaman, SIM A umum', 'All risk, deductible Rp 500k', 'Service tiap 5.000 km', '—'],
+    cta: 'Sewa dengan driver',
+  },
+  {
+    id: 'bulanan',
+    name: 'Bulanan',
+    price: 'Rp 6,5jt',
+    period: 'per bulan, sampai Rp 7jt',
+    rows: ['30 hari', 'KTP dan kontrak sewa', 'Tersedia sesuai kebutuhan', 'All risk, deductible Rp 500k', 'Ganti unit jika trouble', 'Sampai 40% vs harian'],
+    cta: 'Konsultasi paket bulanan',
+    featured: true,
+  },
+];
+export const planRowLabels = ['Minimal booking', 'Syarat', 'Driver', 'Asuransi', 'Perawatan', 'Hemat dibanding harian'];
+
+/* ---------- Langkah ---------- */
+export const steps = [
+  { name: 'Pilih mobil', text: 'Lihat armada, cek harga dan spek. Atau hitung total sewamu di kalkulator.' },
+  { name: 'Booking', text: 'Isi form, upload SIM dan KTP, lalu bayar DP 30%. Lima menit selesai.' },
+  { name: 'Pickup', text: 'Datang ke cabang atau minta mobil diantar ke hotel, rumah, atau bandara.' },
+  { name: 'Drive dan return', text: 'Nikmati perjalanan dan kembalikan mobil di waktu yang disepakati. Jarak bebas 300 km per hari.' },
+];
+
+/* ---------- Corporate ---------- */
+export const corporate = [
+  { title: 'Fleet management dashboard', text: 'Pantau seluruh unit, jadwal service, dan pemakaian dalam satu layar.' },
+  { title: 'Dedicated account manager', text: 'Satu orang yang selalu tahu kebutuhan perusahaanmu.' },
+  { title: 'Invoice sesuai pajak', text: 'Invoice dan faktur lengkap, siap untuk pembukuan.' },
+];
+
+/* ---------- Cabang ---------- */
+export const branches = [
+  { city: 'Jakarta', points: 'Bandara Soekarno-Hatta, Kemayoran, TB Simatupang' },
+  { city: 'Bandung', points: 'Pickup di kota, delivery ke hotel dan rumah' },
+  { city: 'Surabaya', points: 'Pickup di kota, delivery ke hotel dan rumah' },
+  { city: 'Yogyakarta', points: 'Pickup di kota, delivery ke hotel dan rumah' },
+  { city: 'Bali', points: 'Bandara Ngurah Rai dan Kuta' },
+  { city: 'Medan', points: 'Pickup di kota, delivery ke hotel dan rumah' },
+];
+export const branchCities = ['Jakarta (Soekarno-Hatta)', 'Jakarta (Kemayoran)', 'Jakarta (TB Simatupang)', 'Bandung', 'Surabaya', 'Yogyakarta', 'Bali (Ngurah Rai)', 'Bali (Kuta)', 'Medan'];
+
+/* ---------- Testimoni (dari PRD v1, konfirmasi klien) ---------- */
+export const testimonials = [
+  { quote: 'Pakai monthly buat assignment 3 bulan di Surabaya. Sigap, responsif, mobil bagus.', name: 'Bayu', role: 'Project Manager' },
+  { quote: 'Liburan keluarga ke Bali, ambil Innova with driver. Driver-nya ramah, hafal jalan.', name: 'Keluarga Wijaya', role: 'Liburan keluarga, Bali' },
+  { quote: 'Corporate fleet 15 unit untuk operasional, sudah 2 tahun no issue.', name: 'PT Maju Bersama', role: 'Corporate fleet' },
+  { quote: 'Reschedule mendadak, admin oke banget bantu. Fleksibel!', name: 'Andini', role: 'Solo traveler' },
+];
+
+/* ---------- FAQ ---------- */
+export const faqs = [
+  { q: 'Syarat sewa lepas kunci apa saja?', a: 'SIM A aktif, KTP, dan deposit Rp 1–3 juta sesuai jenis mobil.' },
+  { q: 'Bisa antar jemput di bandara?', a: 'Bisa. Tambahan Rp 100 ribu untuk delivery dalam kota.' },
+  { q: 'Bagaimana jika mobil mengalami kerusakan?', a: 'Asuransi all risk menanggung kerusakan, dengan deductible Rp 500 ribu.' },
+  { q: 'Bisa keluar kota?', a: 'Bisa. Ada biaya per km di atas jarak bebas 300 km per hari.' },
+  { q: 'Pembayaran apa saja yang diterima?', a: 'Transfer bank, kartu kredit, QRIS, GoPay, dan OVO.' },
+  { q: 'Bisa request mobil yang tidak ada di website?', a: 'Bisa. Hubungi kami lewat WhatsApp untuk konsultasi unit.' },
+];
+
+/* ---------- Kredit foto ---------- */
+export const photoCredits = [
+  'Jeffry Surianto', 'Kelvin Valerio', 'Kipras Zabeliauskas', 'Ruslan Ataev', 'Trac Vu', 'Pavel Danilyuk',
+  'Artem Podrez', 'Fatih Erden', 'Negative Space', 'Lan Yao', 'Vasilis Karkalas', 'Gustavo Fring', 'Erik Mclean',
+];
