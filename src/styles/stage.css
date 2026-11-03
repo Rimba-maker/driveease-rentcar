@@ -1,4 +1,4 @@
-/* tasteskill / scenes / stage.css — the held stage under every scroll scene (references/scenes.md).
+/* Scroll scenes: the held stage under every scene.
    Without .is-live (no script, a failed CDN, reduced motion, a phone set to 'rest') a scene is an ordinary
    section showing its finished composition. With it, the section is (hold + 1) screens tall and the
    stage sticks to the viewport for the hold. */
