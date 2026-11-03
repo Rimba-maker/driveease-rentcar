@@ -1,0 +1,67 @@
+---
+import Calculator from './react/Calculator.tsx';
+import { plans, planRowLabels, waLink } from '../data/site';
+const msg = (n: string) => waLink(`Halo DriveEase, saya tertarik paket ${n}.`);
+---
+
+<section id="harga" class="section wrap" aria-labelledby="harga-title">
+  <div class="ptable-wrap reveal">
+    <table class="ptable">
+      <caption class="sr-only">Perbandingan paket sewa DriveEase</caption>
+      <colgroup><col class="c0" /><col class="cp" /><col class="cp" /><col class="cp" /></colgroup>
+      <thead>
+        <tr>
+          <th scope="col">
+            <h2 id="harga-title" class="head">Harga yang jelas</h2>
+          </th>
+          {plans.map((p) => (
+            <th scope="col" class={p.featured ? 'feat' : ''}>
+              <span class="pn">{p.name}</span>
+              <span class="pp">{p.price}</span>
+              <span class="pu">{p.period}</span>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {planRowLabels.map((label, ri) => (
+          <tr>
+            <th scope="row">{label}</th>
+            {plans.map((p) => <td class={p.featured ? 'feat' : ''}>{p.rows[ri]}</td>)}
+          </tr>
+        ))}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          {plans.map((p) => (
+            <td class={p.featured ? 'feat' : ''}>
+              <a class={`btn ${p.featured ? 'btn--paper' : 'btn--ink'} btn--sm`} href={msg(p.name)} target="_blank" rel="noopener">{p.cta}</a>
+            </td>
+          ))}
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="plans-m">
+    <h2 class="head" style="margin-bottom: 16px">Harga yang jelas</h2>
+    {plans.map((p) => (
+      <article class={`plan-m reveal ${p.featured ? 'feat' : ''}`}>
+        <span class="pn">{p.name}</span>
+        <span class="pp">{p.price}</span>
+        <span class="pu">{p.period}</span>
+        <dl>
+          {planRowLabels.map((label, ri) => (
+            <div><dt>{label}</dt><dd>{p.rows[ri]}</dd></div>
+          ))}
+        </dl>
+        <a class={`btn ${p.featured ? 'btn--paper' : 'btn--ink'}`} href={msg(p.name)} target="_blank" rel="noopener">{p.cta}</a>
+      </article>
+    ))}
+  </div>
+
+  <div class="reveal">
+    <Calculator client:visible />
+  </div>
+</section>

@@ -1,5 +1,9 @@
 ---
+import '@fontsource/jost/latin-400.css';
+import '@fontsource/jost/latin-500.css';
+import '@fontsource/jost/latin-700.css';
 import '../styles/global.css';
+import '../styles/stage.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MobileBottomBar from '../components/MobileBottomBar.astro';
@@ -9,35 +13,56 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Rental mobil terpercaya, dari city car sampai executive sedan. Lepas kunci atau with driver. Harian, mingguan, bulanan.' } = Astro.props;
+const {
+  title,
+  description = 'Rental mobil terpercaya, 200+ unit dari city car sampai executive sedan. Lepas kunci atau with driver. Harian, mingguan, bulanan. 8 cabang Indonesia.',
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoRental',
+  name: 'DriveEase Rentcar',
+  description,
+  slogan: 'Rental Mudah, Mobil Siap, Perjalanan Lancar.',
+  areaServed: ['Jakarta', 'Bandung', 'Surabaya', 'Yogyakarta', 'Bali', 'Medan'],
+  priceRange: 'Rp 250.000 – Rp 1.200.000 per hari',
+  makesOffer: [
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Rental mobil lepas kunci' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Rental mobil with driver' } },
+    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Rental mobil bulanan' } },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#d92b21" />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta property="og:image" content="/img/jakarta-night.webp" />
+    <meta name="keywords" content="rental mobil jakarta, sewa mobil harian, rental mobil bulanan, sewa innova, lepas kunci jakarta, rental mobil bandung" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
-  <body class="flex min-h-screen flex-col bg-[var(--color-canvas)] text-[var(--color-ink)] font-sans antialiased">
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only">Lewati ke konten</a>
     <Navbar />
-    <main class="flex-1 pb-20 md:pb-0">
+    <main id="main">
       <slot />
     </main>
     <Footer />
     <MobileBottomBar />
+    <script>
+      import '../scripts/motion.ts';
+      import '../scripts/scenes.ts';
+    </script>
   </body>
 </html>

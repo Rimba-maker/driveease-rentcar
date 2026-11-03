@@ -1,0 +1,33 @@
+---
+import { branches, rp, DELIVERY_FEE, waLink } from '../data/site';
+---
+
+<section id="cabang" class="section wrap" aria-labelledby="cabang-title">
+  <div class="branches">
+    <div class="bl">
+      <h2 id="cabang-title" class="giant reveal">Cabang</h2>
+      <p class="lead reveal" style="--d:1; max-width: 32ch">
+        8 titik layanan di 6 kota. Mobil bisa diantar ke hotel atau rumah di area cabang, tambahan {rp(DELIVERY_FEE)} untuk dalam kota.
+      </p>
+      <div class="tile photo reveal" style="--d:2">
+        <img class="fill" src="/img/jakarta-tower.webp" srcset="/img/jakarta-tower-sm.webp 800w, /img/jakarta-tower.webp 1600w" sizes="(max-width: 899px) 100vw, 50vw" alt="Gedung-gedung TB Simatupang, Jakarta, dari udara" width="1600" height="1067" loading="lazy" decoding="async" />
+      </div>
+    </div>
+    <div class="bars">
+      {branches.map((b, i) => (
+        <details class="bar reveal" style={`--d:${i}`} open={i === 0}>
+          <summary>{b.city}</summary>
+          <div class="pn">
+            <div><span>Titik</span><span>{b.points}</span></div>
+            <div><span>Layanan</span><span>Lepas kunci, with driver</span></div>
+            <div><span>Bantuan</span><span>Hotline 24/7</span></div>
+          </div>
+        </details>
+      ))}
+      <div class="tile tile--accent bars-end reveal">
+        <p class="lead">Butuh mobil diantar ke hotel atau bandara? Hotline kami aktif 24 jam.</p>
+        <a class="btn btn--paper" style="align-self:flex-start" href={waLink('Halo DriveEase, saya butuh mobil diantar.')} target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>

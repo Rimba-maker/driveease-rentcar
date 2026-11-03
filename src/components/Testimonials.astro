@@ -1,0 +1,19 @@
+---
+import { testimonials } from '../data/site';
+---
+
+<section class="section" aria-labelledby="testi-title">
+  <div class="t-head">
+    <h2 id="testi-title" class="head a reveal">Cerita klien kami</h2>
+    <p class="lead b reveal" style="--d:1">5.000+ klien aktif, dari penugasan kerja sampai liburan keluarga.</p>
+  </div>
+  {testimonials.map((t, i) => (
+    <figure class="quote-row" style="margin:0">
+      <figcaption class="who">
+        <span class="lead strong">{t.name}</span>
+        <span class="role">{t.role}</span>
+      </figcaption>
+      <blockquote><p>{t.quote}</p></blockquote>
+    </figure>
+  ))}
+</section>

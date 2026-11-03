@@ -1,0 +1,26 @@
+---
+import { reasons } from '../data/site';
+---
+
+<section class="section" aria-labelledby="why-title">
+  <div class="split">
+    <div class="split-l">
+      <h2 id="why-title" class="head zig">
+        <span>Tenang di jalan,</span><span>dari awal.</span>
+      </h2>
+      <div class="foot">
+        <p class="lead">Kenapa pilih DriveEase: mobil segar, asuransi penuh, dan tim yang siap kapan saja.</p>
+        <a href="#booking-form" class="btn">Booking</a>
+      </div>
+    </div>
+    <div class="split-r">
+      {reasons.map((r, i) => (
+        <div class="row reveal" style={`--d:${i}`}>
+          <h3>{r.title}</h3>
+          <p>{r.text}</p>
+          <ul>{r.terms.map((t) => <li>{t}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

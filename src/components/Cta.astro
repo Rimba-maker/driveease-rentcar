@@ -1,0 +1,28 @@
+---
+import BookingForm from './react/BookingForm.tsx';
+---
+
+<section id="booking" class="section wrap" aria-labelledby="cta-title">
+  <div class="cta-row">
+    <div class="tile side l">
+      <img class="fill" src="/img/luggage.webp" srcset="/img/luggage-sm.webp 800w, /img/luggage.webp 1600w" sizes="(max-width: 899px) 50vw, 40vw" alt="Pasangan menyiapkan koper di bagasi mobil" width="800" height="1000" decoding="async" />
+    </div>
+    <div class="tile tile--accent cta-main">
+      <h2 id="cta-title" class="head">Pesan sekarang, mobil siap esok</h2>
+      <p class="lead">Isi form lima menit, bayar DP 30%, dan unit menunggu di cabang atau diantar ke lokasimu.</p>
+      <a class="btn btn--paper" href="#booking-form">Isi form booking</a>
+    </div>
+    <div class="tile side r" style="background: var(--field)">
+      <img class="fill" src="/img/driver.webp" srcset="/img/driver-sm.webp 800w, /img/driver.webp 1600w" sizes="(max-width: 899px) 50vw, 40vw" alt="Pengemudi tersenyum di balik kemudi" width="800" height="1000" decoding="async" />
+    </div>
+  </div>
+
+  <div class="booking" id="booking-form">
+    <div class="tile ph">
+      <video class="fill" poster="/video/driver-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Sopir profesional mengemudi dengan tenang" width="1280" height="674"><source src="/video/driver-loop.webm" type="video/webm" /><source src="/video/driver-loop.mp4" type="video/mp4" /></video>
+    </div>
+    <div>
+      <BookingForm client:visible />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+---
+import { faqs } from '../data/site';
+---
+
+<section class="section" aria-labelledby="faq-title">
+  <div class="faq-head">
+    <h2 id="faq-title" class="head">Tanya jawab</h2>
+  </div>
+  {faqs.map((f, i) => (
+    <div class="band">
+      <h3>{f.q}</h3>
+      <p>{f.a}</p>
+    </div>
+  ))}
+</section>
