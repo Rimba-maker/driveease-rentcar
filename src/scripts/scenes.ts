@@ -41,19 +41,27 @@ function registerScenes() {
     });
 
   // Four steps, ordered by size: each tile grows from its baseline as the scroll reaches it.
-  Scenes['steps-grow'] = (root: HTMLElement, opts: { hold?: number } = {}) =>
-    Stage.scene(root, {
-      hold: opts.hold ?? 2,
+  Scenes['steps-grow'] = (root: HTMLElement, opts: { hold?: number } = {}) => {
+    // below 900px the four tiles stack: the finished composition reads better than a held stage
+    if (window.matchMedia('(max-width: 899px)').matches) {
+      root.classList.add('is-rest');
+      return null;
+    }
+    return Stage.scene(root, {
+      hold: opts.hold ?? 1.7,
       scrub: Stage.lenis ? true : 0.5,
       phone: 'rest',
       build(tl: gsap.core.Timeline, { q }: { q: (s: string) => HTMLElement[] }) {
+        // the first (smallest) tile is already standing when the scene starts; the rest grow in order
         q('.gt').forEach((tile, i) => {
-          const at = 0.04 + i * 0.22;
+          if (i === 0) return;
+          const at = 0.02 + (i - 1) * 0.28;
           tl.fromTo(tile, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.24 }, at)
             .fromTo(tile.children, { y: 36, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.04, duration: 0.14 }, at + 0.1);
         });
       },
     });
+  };
 }
 
 function counters() {
